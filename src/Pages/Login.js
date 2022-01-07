@@ -16,7 +16,7 @@ const Login = () => {
     try {
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      //   nav("/dashboard");
+      nav("/dashboard");
     } catch (error) {
       console.log("error");
     }
@@ -38,7 +38,7 @@ const Login = () => {
           <input
             type="email"
             name="email"
-            className="w-full py-0.5 display: block mb-4 border-solid border-2 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            className="p-2 w-full py-0.5 display: block mb-4 border-solid border-2 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             ref={emailRef}
           />
           <label className="font-semibold" htmlFor="email">
@@ -47,7 +47,7 @@ const Login = () => {
           <input
             type="password"
             name="password"
-            className="w-full py-0.5 display: block mb-4 border-solid border-2 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            className="p-2 w-full py-0.5 display: block mb-4 border-solid border-2 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             ref={passwordRef}
           />
           <span className="text-xs">Don't have an account?</span>
@@ -56,7 +56,7 @@ const Login = () => {
             Sign up here!
           </Link>
           <input
-            className="w-full mt-3 display: block bg-blue-500 rounded-md px-4 py-2 text-sm text-white hover:cursor-pointer"
+            className="p-2 w-full mt-3 display: block bg-blue-500 rounded-md px-4 py-2 text-sm text-white hover:cursor-pointer"
             type="submit"
             value="Submit"
             disabled={loading}
