@@ -4,8 +4,17 @@ import FinanceBro from "../Images/Revenue-bro.svg";
 import { DashboardCardBarchart } from "../Components/DashboardCardBarchart";
 import { DashboardCardLinechart } from "../Components/DashboardCardLinechart";
 import { DashboardCardPiechart } from "../Components/DashboardCardPiechart";
+import Daterange from "../Components/Daterange";
+
 
 const Home = () => {
+<<<<<<< HEAD
+	return <div>
+		<Daterange />
+	</div>
+
+	//return <div>Home</div>;
+=======
   return (
     <div className="bg-white h-screen flex flex-row justify-center items-center">
       <div className="max-w-md">
@@ -26,6 +35,7 @@ const Home = () => {
       <img src={FinanceBro} alt="Landing Page" className="h-3/4" />
     </div>
   );
+>>>>>>> fae214a4a1cb3562cbdc1d2400321150b65edd4b
 };
 
 export default Home;

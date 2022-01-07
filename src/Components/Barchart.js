@@ -14,31 +14,51 @@ import {
 //dummy data
 const data = [
   {
-    name: "May",
-    month: 4000,
+    name: "Jan",
+    month: 312,
   },
   {
-    name: "June",
+    name: "Feb",
+    month: -3211,
+  },
+  {
+    name: "Mar",
+    month: 1432,
+  },
+  {
+    name: "Apr",
+    month: 5431,
+  },
+  {
+    name: "May",
+    month: -2190,
+  },
+  {
+    name: "Jun",
     month: -3000,
   },
   {
-    name: "July",
+    name: "Jul",
     month: -2000,
   },
   {
-    name: "August",
+    name: "Aug",
     month: 2780,
   },
   {
-    name: "September",
+    name: "Sep",
     month: -1890,
   },
   {
-    name: "October",
+    name: "Oct",
     month: 2390,
   },
   {
-    name: "November",
+    name: "Nov",
+    month: 3490,
+  },
+  {
+    name: "Dec",
     month: 3490,
   },
 ];
