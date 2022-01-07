@@ -2,7 +2,7 @@ import Piechart from "./Piechart";
 import "./DashboardCard.css";
 import Daterange from "./Daterange";
 
-export const DashboardCardPiechart = () => {
+export const DashboardCardPiechart = ({ data }) => {
   return (
     <div className="dashboardcard-box">
       <div className="dashboardcard-header-box">
