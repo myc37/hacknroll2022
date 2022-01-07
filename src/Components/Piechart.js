@@ -28,7 +28,6 @@ export default class Example extends PureComponent {
             innerRadius={60}
             outerRadius={80}
             fill="#8884d8"
-            label
           >
               {data01.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -36,9 +35,7 @@ export default class Example extends PureComponent {
 
 
           </Pie>
-          <text x={650} y={20} fill="black" textAnchor="middle" dominantBaseline="central">
-            <tspan fontSize="14">Test</tspan>
-        </text>
+          
           <Legend />
      
           <Tooltip />
