@@ -3,9 +3,12 @@ import "./DashboardCard.css";
 import { useState } from "react";
 import Transaction from "../Pages/Transaction";
 
-export const DashboardCardTransactionHistory = () => {
+export const DashboardCardTransactionHistory = ( { transactions }) => {
   const [open, setOpen] = useState(false);
-  const props = { open, setOpen };
+  const modalProps = { open, setOpen };
+  const today =new Date()
+  const oneWeekAgo = new Date( today.getDate() -7 )
+  const weeklyProps = { today, oneWeekAgo ,transactions }
   return (
     <>
       <div className="dashboardcard-transaction-box">
@@ -22,9 +25,9 @@ export const DashboardCardTransactionHistory = () => {
           <div className="dashboardcard-subheader">Past 7 days</div>
           <div className="dashboardcard-amount">Amount</div>
         </div>
-        <TransactionHistory />
+        <TransactionHistory {...weeklyProps} />
       </div>
-      <Transaction {...props} />
+      <Transaction {...modalProps} />
     </>
   );
 };
