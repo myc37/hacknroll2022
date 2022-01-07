@@ -4,7 +4,10 @@
 
 @layer components {
   .dashboardcard-box {
-    @apply flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white shadow-lg rounded-sm border border-gray-200;
+    @apply flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white shadow-lg rounded-2xl border border-gray-200;
+  }
+  .dashboardcard-transaction-box {
+    @apply flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white shadow-lg rounded-2xl border border-gray-200 overflow-auto h-80;
   }
   .dashboardcard-header-box {
     @apply px-5 pt-5;
@@ -14,5 +17,8 @@
   }
   .dashboardcard-subheader {
     @apply text-xs text-center font-semibold text-gray-400 uppercase mb-1;
+  }
+  .dashboardcard-amount {
+    @apply text-xs text-right font-semibold text-gray-400 uppercase mb-1;
   }
 }
