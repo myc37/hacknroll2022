@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import FinanceBro from "../Images/Revenue-bro.svg";
+import { DashboardCardBarchart } from "../Components/DashboardCardBarchart";
+import { DashboardCardLinechart } from "../Components/DashboardCardLinechart";
+import { DashboardCardPiechart } from "../Components/DashboardCardPiechart";
 
 const Home = () => {
   return (
