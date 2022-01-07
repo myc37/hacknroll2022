@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Contexts/AuthContext";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const emailRef = useRef();
@@ -16,15 +18,24 @@ const Login = () => {
     try {
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
+      setLoading(false);
       nav("/dashboard");
     } catch (error) {
-      console.log("error");
+      toast.error(error.message.substring(10), {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+      });
+      setLoading(false);
     }
-    setLoading(false);
   }
 
   return (
     <>
+      <ToastContainer />
       <div className="h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <form
           className="border-2 border-dark flex-col px-12 py-12"
