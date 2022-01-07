@@ -16,7 +16,7 @@ const Home = () => {
           FinanceMeister
         </h1>
         <p className="mb-8">
-          A website to help track one's transactions (expenses & income).
+          A website to help track one's transactions (expenses and income).
           Provides some useful analysis based on the transactions.
         </p>
         <Link
