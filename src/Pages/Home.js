@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import FinanceBro from "../Images/Revenue-bro.svg";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import useDate from "../Hooks/useDate";
 
 const Home = () => {
@@ -30,7 +28,6 @@ const Home = () => {
 				</Link>
 			</div>
 			<img src={FinanceBro} alt="Landing Page" className="h-3/4" />
-			<ToastContainer />
 		</div>
 	);
 };

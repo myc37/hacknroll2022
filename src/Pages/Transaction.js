@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -22,7 +21,6 @@ const Transaction = ({ open, setOpen }) => {
 	const [amount, setAmount] = useState("");
 	const [category, setCategory] = useState("");
 	const [description, setDescription] = useState("");
-	const nav = useNavigate();
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -48,7 +46,7 @@ const Transaction = ({ open, setOpen }) => {
 				draggable: false,
 				theme: "colored",
 			});
-			nav("/");
+			setOpen(false);
 		} catch (error) {
 			console.log(error);
 		}
@@ -64,6 +62,7 @@ const Transaction = ({ open, setOpen }) => {
 			<DialogContent>
 				<form
 					id="transactionForm"
+					name="transactionForm"
 					className="grid grid-rows-auto gap-4 place-content-center p-4"
 					onSubmit={handleSubmit}
 				>
