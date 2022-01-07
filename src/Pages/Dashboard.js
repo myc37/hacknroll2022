@@ -24,7 +24,6 @@ const Dashboard = () => {
 							docData.date = docData.date.toDate();
 							items.push(docData);
 						});
-
 						setData(items);
 					});
 			} catch (error) {

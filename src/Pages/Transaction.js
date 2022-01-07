@@ -32,12 +32,22 @@ const Transaction = ({ open, setOpen }) => {
 				type === "income"
 					? parseFloat(amount)
 					: parseFloat("-" + amount),
-			category: category === "expense" ? category : "Income",
+			category: type === "expense" ? category : "Income",
 			description,
 			user: currentUser ? currentUser.uid : "",
 		};
 		try {
-			await db.collection("transactions").add(formData);
+			await db
+				.collection("transactions")
+				.add(formData)
+				.then(() => {
+					setDate(new Date());
+					setTitle("");
+					setType("");
+					setAmount("");
+					setCategory("");
+					setDescription("");
+				});
 			toast.success("Added Transaction!", {
 				position: "top-center",
 				autoClose: 3000,
