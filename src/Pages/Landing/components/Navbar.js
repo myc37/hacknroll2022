@@ -98,11 +98,11 @@ const Navbar = () => {
     } else if (currentUser == null) {
       return (
         <>
-          <Link className="p-4 hover:bg-gray-100" to="/">
+          <Link className="p-4 hover:bg-secondary rounded-full" to="/">
             Home
           </Link>
           <Link
-            className="bg-green-700 rounded-md px-4 py-2 text-sm text-white hover:cursor-pointer hover:bg-green-500"
+            className="bg-[#1B6F25] rounded-md px-4 py-2 text-sm text-white hover:cursor-pointer hover:bg-green-500"
             to="/login"
           >
             Login

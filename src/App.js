@@ -11,6 +11,7 @@ import Footer from "./Pages/Landing/components/Footer";
 import Navbar from "./Pages/Landing/components/Navbar";
 import News from "./Pages/News";
 import History from "./Pages/History";
+import Goals from "./Pages/Goals";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/news" element={<News />} />
           <Route path="/history" element={<History />} />
+          <Route path="/goals" element={<Goals />} />
         </Routes>
         <Footer />
       </AuthProvider>

@@ -4,10 +4,6 @@ import Card from "../Components/Card";
 const News = () => {
   const [allNews, setAllNews] = useState([]);
 
-  function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
   async function getData() {
     const res = await fetch(
       "https://yh-finance.p.rapidapi.com/auto-complete?q=finance&region=SG",
@@ -33,7 +29,7 @@ const News = () => {
   React.useEffect(() => {
     const fetchData = async () => {
       const data = await getData();
-      console.log(data);
+      // console.log(data);
       setAllNews(data);
     };
     fetchData();
@@ -52,8 +48,9 @@ const News = () => {
 
   return (
     <>
+      <h2 className="mt-8 font-bold text-2xl text-center">News</h2>
       {allNews.length !== 0 ? (
-        <div className="grid grid-cols-3 grid-flow-row auto-rows-max py-4">
+        <div className="grid grid-cols-3 grid-flow-row auto-rows-max mb-4">
           {news}
         </div>
       ) : (
