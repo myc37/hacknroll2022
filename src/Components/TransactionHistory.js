@@ -41,8 +41,8 @@ export default function TransactionHistory({
             <div
               className={
                 transaction.type === "expense"
-                  ? "flex justify-between px-3  bg-red-500 border-2 py-3 rounded-full"
-                  : "flex justify-between px-3  bg-green-600 border-2 py-3 rounded-full"
+                  ? "flex justify-between px-3  bg-red-500 border-2 py-3 rounded-full mr-4"
+                  : "flex justify-between px-3  bg-green-600 border-2 py-3 rounded-full mr-4"
               }
             >
               {categories[transaction.category]}
@@ -59,8 +59,14 @@ export default function TransactionHistory({
                 transaction.date.getFullYear()}
             </p>
           </div>
-          <p className="text-xl font-semibold self-center">
-            $
+          <p
+            className={
+              transaction.type === "expense"
+                ? "text-xl font-semibold self-center text-red-500"
+                : "text-xl font-semibold self-center text-green-600"
+            }
+          >
+            {transaction.amount < 0 ? "-" : "+"}$
             {transaction.amount < 0
               ? -1 * transaction.amount
               : transaction.amount}

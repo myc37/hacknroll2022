@@ -19,7 +19,7 @@
     @apply text-lg text-left font-semibold text-gray-800;
   }
   .dashboardcard-subheader {
-    @apply text-xs text-center font-semibold text-gray-400 uppercase mb-1;
+    @apply text-sm text-center font-semibold text-gray-400 uppercase mb-1;
   }
   .dashboardcard-amount {
     @apply text-xs text-right font-semibold text-gray-400 uppercase mb-1 mr-16;
