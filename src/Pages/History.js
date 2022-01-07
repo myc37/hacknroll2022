@@ -1,11 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Daterange from "../Components/Daterange";
 import TransactionHistory from "../Components/TransactionHistory";
+import { useAuth } from "../Contexts/AuthContext";
+import { db } from "../firebase";
+import useDate from "../Hooks/useDate";
 import Transaction from "./Transaction";
 
 const History = () => {
   const [open, setOpen] = useState(false);
   const props = { open, setOpen };
+
+  const [transactions, setTransactions] = useState([]);
+  const { currentUser } = useAuth();
+
+  useEffect(() => {
+    async function fetchData() {
+      db.collection("transactions")
+        .where("user", "==", currentUser.uid)
+        .onSnapshot((querySnapshot) => {
+          const items = [];
+          querySnapshot.forEach((doc) => {
+            const docData = doc.data();
+            docData.date = docData.date.toDate();
+            items.push(docData);
+          });
+
+          setTransactions(items);
+        });
+    }
+    fetchData();
+  }, []);
+
+  const { today, oneWeekAgo } = useDate();
+  const weeklyProps = { today, oneWeekAgo, transactions };
 
   return (
     <>
@@ -25,7 +52,7 @@ const History = () => {
           </div>
           <div className="dashboardcard-amount mt-5">Amount</div>
         </div>
-        <TransactionHistory />
+        <TransactionHistory {...weeklyProps} />
       </div>
       <Transaction {...props} />
     </>

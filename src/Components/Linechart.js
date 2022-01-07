@@ -1,79 +1,95 @@
-import React, { PureComponent } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import React, { PureComponent } from "react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
-// dummy data
-const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
-
-export default class Example extends PureComponent {
-  static demoUrl = 'https://codesandbox.io/s/simple-line-chart-kec3v';
-
-  render() {
-    return (
-      <ResponsiveContainer width="100%" aspect={3}>
-        <LineChart
-          width={500}
-          height={300}
-          data={data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend verticalAlign='top' height={36} />
-          <Line name="amt pages" type="monotone" dataKey="amt" stroke="#8884d8" activeDot={{ r: 8 }} />
-          <Line name="uv pages" type="monotone" dataKey="uv" stroke="#82ca9d" />
-        </LineChart>
-      </ResponsiveContainer>
-    );
+export default function Linechart({
+  filteredTransactions,
+  today,
+  oneWeekAgo,
+  oneMonthAgo,
+  oneYearAgo,
+}) {
+  function compare(a, b) {
+    const aDateStr =
+      a.date.getDate() + "/" + a.date.getMonth() + "/" + a.date.getFullYear();
+    const bDateStr =
+      b.date.getDate() + "/" + b.date.getMonth() + "/" + b.date.getFullYear();
+    if (aDateStr === bDateStr) {
+      return 0;
+    } else if (a.date < b.date) {
+      return -1;
+    }
+    return 1;
   }
-}
 
+  const tempArr = [];
+  const calcPastWeek = () => {
+    filteredTransactions.sort(compare);
+    let j = 0;
+    for (let i = 0; i < filteredTransactions.length - 1; i++) {
+      if (compare(filteredTransactions[i], filteredTransactions[i + 1]) == 0) {
+        tempArr[j] = {
+          date: filteredTransactions[i].date,
+          amount:
+            tempArr[j].amount +
+            filteredTransactions[i].amount +
+            filteredTransactions[i + 1].amount,
+        };
+      } else {
+        if (j == 0) {
+          tempArr[j] = {
+            date: filteredTransactions[i].date,
+            amount: filteredTransactions[i].amount,
+          };
+          j += 1;
+        } else {
+          j += 1;
+          tempArr[j] = {
+            date: filteredTransactions[i + 1].date,
+            amount: filteredTransactions[i + 1].amount,
+          };
+        }
+      }
+    }
+    console.log(filteredTransactions);
+    console.log(tempArr);
+  };
+  calcPastWeek();
+
+  return (
+    <ResponsiveContainer width="100%" aspect={3}>
+      <LineChart
+        width={500}
+        height={300}
+        data={tempArr}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend verticalAlign="top" height={36} />
+        <Line
+          name="Amount Spent"
+          type="monotone"
+          dataKey="amount"
+          stroke="#8884d8"
+          activeDot={{ r: 8 }}
+        />
+      </LineChart>
+    </ResponsiveContainer>
+  );
+}

@@ -63,7 +63,7 @@ const data = [
   },
 ];
 
-export default function Barchart() {
+export default function Barchart({ transactions }) {
   return (
     <ResponsiveContainer width="100%" aspect={3}>
       <BarChart

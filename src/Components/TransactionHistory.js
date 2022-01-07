@@ -13,11 +13,11 @@ export default function TransactionHistory({
   const [filtered, setFiltered] = useState([]);
 
   const categories = {
-    food: <FastfoodIcon />,
-    transport: <DirectionsBusFilledIcon />,
-    luxury: <DiamondIcon />,
-    business: <BusinessCenterIcon />,
-    other: <CategoryIcon />,
+    Food: <FastfoodIcon />,
+    Transport: <DirectionsBusFilledIcon />,
+    Luxury: <DiamondIcon />,
+    Business: <BusinessCenterIcon />,
+    Other: <CategoryIcon />,
   };
 
   useEffect(() => {
@@ -40,9 +40,7 @@ export default function TransactionHistory({
           <div className="flex">
             {categories[transaction.category]}
             <h2 className="ml-2">{transaction.type}</h2>
-            <text className="ml-4 text-gray-500">
-              {transaction.description}
-            </text>
+            <p className="ml-4 text-gray-500">{transaction.description}</p>
           </div>
           <p>
             {transaction.amount < 0 ? "-" : "+"}$

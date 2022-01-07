@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { DashboardCardPiechart } from "./Components/DashboardCardPiechart";
 import { AuthProvider } from "./Contexts/AuthContext";
 import Dashboard from "./Pages/Dashboard";
 import Home from "./Pages/Home";
