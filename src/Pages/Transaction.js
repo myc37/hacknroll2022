@@ -3,26 +3,40 @@ import { useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { toast } from "react-toastify";
 
 const expenseOptions = ["Transport", "Food", "Luxury", "Business", "Others"];
 
 const Transaction = () => {
 	const [date, setDate] = useState(new Date());
-	const [type, setType] = useState("");
+	const [type, setType] = useState("income");
 	const [amount, setAmount] = useState(0.0);
-	const [category, setCategory] = useState("");
+	const [category, setCategory] = useState("Transport");
 	const [description, setDescription] = useState("");
 	const nav = useNavigate();
 
 	async function handleSubmit(e) {
 		e.preventDefault();
+		const formData = {
+			date,
+			type,
+			amount:
+				type === "income"
+					? parseFloat(amount)
+					: parseFloat("-" + amount),
+			category,
+			description,
+		};
+		console.log(formData);
 		try {
-			await db.collection("transactions").add({
-				date,
-				type,
-				amount,
-				category,
-				description,
+			await db.collection("transactions").add(formData);
+			toast.success("Added Transaction!", {
+				position: "top-center",
+				autoClose: 3000,
+				hideProgressBar: true,
+				pauseOnHover: false,
+				draggable: false,
+				theme: "colored",
 			});
 			nav("/");
 		} catch (error) {
