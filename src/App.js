@@ -9,6 +9,7 @@ import Footer from "./Pages/Landing/components/Footer";
 import Navbar from "./Pages/Landing/components/Navbar";
 import News from "./Pages/News";
 import History from "./Pages/History";
+import Goals from "./Pages/Goals";
 
 function App() {
   const { currentUser } = useAuth();
@@ -24,6 +25,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/reset" element={<ResetPassword />} />
+          <Route
+          path="/goals"
+          element={currentUser ? <Goals /> : <Navigate to="/login" />}
+        />
         <Route
           path="/news"
           element={currentUser ? <News /> : <Navigate to="/login" />}
