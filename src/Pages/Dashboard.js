@@ -3,18 +3,20 @@ import { DashboardCardBarchart } from "../Components/DashboardCardBarchart";
 import { DashboardCardLinechart } from "../Components/DashboardCardLinechart";
 import { DashboardCardPiechart } from "../Components/DashboardCardPiechart";
 import { DashboardCardTransactionHistory } from "../Components/DashboardCardTransactionHistory";
-import { db } from "../firebase";
+// import { db } from "../firebase";
 
 const Dashboard = () => {
 	useEffect(() => {
-		async function fetchData() {
-			await db
-				.collection("transactions")
-				.get()
-				.then((res) => console.log(res.docs));
-		}
-		fetchData();
+		// async function fetchData() {
+		// 	await db
+		// 		.collection("transactions")
+		// 		.get()
+		// 		.then((res) => console.log(res.docs));
+		// }
+		// fetchData();
 	}, []);
+
+	// [{date: 01/07/2022, category: transport, amount: 100, description: ""}]
 
 	return (
 		<div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
