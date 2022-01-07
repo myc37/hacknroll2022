@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import FinanceBro from "../Images/Revenue-bro.svg";
+import { DashboardCardBarchart } from "../Components/DashboardCardBarchart";
+import { DashboardCardLinechart } from "../Components/DashboardCardLinechart";
+import { DashboardCardPiechart } from "../Components/DashboardCardPiechart";
+import Daterange from "../Components/Daterange";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
   return (
@@ -21,6 +27,7 @@ const Home = () => {
         </Link>
       </div>
       <img src={FinanceBro} alt="Landing Page" className="h-3/4" />
+      <ToastContainer />
     </div>
   );
 };
