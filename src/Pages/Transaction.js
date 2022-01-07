@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { db } from "../firebase";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const expenseOptions = ["Transport", "Food", "Luxury", "Business", "Others"];
 
 const Transaction = () => {
+	const [date, setDate] = useState(new Date());
 	const [type, setType] = useState("");
 	const [amount, setAmount] = useState(0.0);
 	const [category, setCategory] = useState("");
@@ -15,6 +18,7 @@ const Transaction = () => {
 		e.preventDefault();
 		try {
 			await db.collection("transactions").add({
+				date,
 				type,
 				amount,
 				category,
@@ -36,6 +40,21 @@ const Transaction = () => {
 				className="grid grid-rows-auto gap-4 place-content-center"
 			>
 				<div className="mt-4">
+					<label
+						htmlFor="datepicker"
+						className="block font-semibold text-blue-700 mb-2"
+					>
+						Date:
+					</label>
+					<DatePicker
+						name="datepicker"
+						id="datepicker"
+						selected={date}
+						onChange={(e) => setDate(e)}
+						className="p-2 rounded-md border-2 w-full text-center"
+					/>
+				</div>
+				<div>
 					<label
 						htmlFor="type"
 						className="block font-semibold text-blue-700 mb-2"
