@@ -1,27 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { DashboardCardBarchart } from "../Components/DashboardCardBarchart";
 import { DashboardCardLinechart } from "../Components/DashboardCardLinechart";
 import { DashboardCardPiechart } from "../Components/DashboardCardPiechart";
 import { DashboardCardTransactionHistory } from "../Components/DashboardCardTransactionHistory";
-// import { db } from "../firebase";
+import { useAuth } from "../Contexts/AuthContext";
+import { db } from "../firebase";
 
 const Dashboard = () => {
-	useEffect(() => {
-		// async function fetchData() {
-		// 	await db
-		// 		.collection("transactions")
-		// 		.get()
-		// 		.then((res) => console.log(res.docs));
-		// }
-		// fetchData();
-	}, []);
+	const [data, setData] = useState([]);
+	const { currentUser } = useAuth();
 
-	// [{date: 01/07/2022, category: transport, amount: 100, description: ""}]
+	useEffect(() => {
+		async function fetchData() {
+			db.collection("transactions")
+				.where("user", "==", currentUser.uid)
+				.onSnapshot((querySnapshot) => {
+					const items = [];
+					querySnapshot.forEach((doc) => {
+						const docData = doc.data();
+						docData.date = docData.date.toDate();
+						items.push(docData);
+					});
+
+					setData(items);
+				});
+		}
+		fetchData();
+	}, []);
 
 	return (
 		<div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
 			<div className="grid grid-cols-8 gap-4">
-				<DashboardCardTransactionHistory />
+				<DashboardCardTransactionHistory transactions={data} />
 				<DashboardCardBarchart />
 				<DashboardCardPiechart />
 				<DashboardCardLinechart />

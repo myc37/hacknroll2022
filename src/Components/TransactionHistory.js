@@ -1,34 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import FastfoodIcon from "@mui/icons-material/Fastfood";
+import CategoryIcon from "@mui/icons-material/Category";
+import DirectionsBusFilledIcon from "@mui/icons-material/DirectionsBusFilled";
+import DiamondIcon from "@mui/icons-material/Diamond";
+import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 
-export default function TransactionHistory() {
-  //dummy data
-  const [transactions, setTransactions] = useState([
-    { id: 1, description: "McDonalds", amount: -20 },
-    { id: 2, description: "Work", amount: 1000 },
-    { id: 3, description: "Qonto", amount: -32 },
-    { id: 4, description: "KFC", amount: -12 },
-    { id: 5, description: "McDonalds", amount: -20 },
-    { id: 6, description: "Work", amount: 1000 },
-    { id: 7, description: "Qonto", amount: -32 },
-    { id: 8, description: "KFC", amount: -12 },
-    { id: 9, description: "McDonalds", amount: -20 },
-    { id: 10, description: "Work", amount: 1000 },
-    { id: 11, description: "Qonto", amount: -32 },
-    { id: 12, description: "KFC", amount: -12 },
-    { id: 13, description: "McDonalds", amount: -20 },
-    { id: 14, description: "Work", amount: 1000 },
-    { id: 15, description: "Qonto", amount: -32 },
-    { id: 16, description: "KFC", amount: -12 },
-  ]);
+export default function TransactionHistory({
+  transactions,
+  today,
+  oneWeekAgo,
+}) {
+  const [filtered, setFiltered] = useState([]);
+
+  const categories = {
+    food: <FastfoodIcon />,
+    transport: <DirectionsBusFilledIcon />,
+    luxury: <DiamondIcon />,
+    business: <BusinessCenterIcon />,
+    other: <CategoryIcon />,
+  };
+
+  useEffect(() => {
+    const temp = transactions.filter(
+      (transaction) =>
+        transaction.date >= oneWeekAgo && transaction.date <= today
+    );
+    setFiltered(temp);
+  }, [transactions]);
+
+  console.log(filtered);
 
   return (
     <div>
-      {transactions.map((transaction) => (
+      {filtered.map((transaction, index) => (
         <div
-          key={transaction.id}
-          className="flex justify-between pr-8 pl-8 bg-slate-100 border-2"
+          key={index}
+          className="flex justify-between pr-8 pl-8 bg-white border-2 border-gray-500 py-5 rounded-lg"
         >
-          <h2>{transaction.description}</h2>
+          <div className="flex">
+            {categories[transaction.category]}
+            <h2 className="ml-2">{transaction.type}</h2>
+            <text className="ml-4 text-gray-500">
+              {transaction.description}
+            </text>
+          </div>
           <p>
             {transaction.amount < 0 ? "-" : "+"}$
             {transaction.amount < 0

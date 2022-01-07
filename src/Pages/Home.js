@@ -3,8 +3,16 @@ import { Link } from "react-router-dom";
 import FinanceBro from "../Images/Revenue-bro.svg";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../Contexts/AuthContext";
+import useDate from "../Hooks/useDate";
 
 const Home = () => {
+	const { currentUser } = useAuth();
+	const { today, oneWeekAgo, oneMonthAgo, oneYearAgo } = useDate();
+	console.log(today);
+	console.log(oneWeekAgo);
+	console.log(oneMonthAgo);
+	console.log(oneYearAgo);
 	return (
 		<div className="bg-white h-screen flex flex-row justify-center items-center">
 			<div className="max-w-md">
