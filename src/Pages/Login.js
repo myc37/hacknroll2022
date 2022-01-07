@@ -36,38 +36,41 @@ const Login = () => {
   return (
     <>
       <ToastContainer />
-      <div className="h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="h-screen flex items-center justify-center py-12 px-4">
         <form
           className="border-2 border-dark flex-col px-12 py-12"
           onSubmit={handleSubmit}
         >
           {/* <h1>{currentUser.email}</h1> */}
-          <h2 className="text-lg font-bold mb-4 text-blue-700">Login</h2>
+          <h2 className="mb-6 text-center jutify-center text-lg font-bold text-blue-700">
+            Login
+          </h2>
           <label className="font-semibold" htmlFor="email">
             Email address
           </label>
           <input
             type="email"
             name="email"
-            className="p-2 w-full py-0.5 display: block mb-4 border-solid border-2 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            className="mt-3 p-2 w-full py-0.5 display: block mb-4 border-solid border-2 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             ref={emailRef}
           />
-          <label className="font-semibold" htmlFor="email">
+          <label className="font-semibold" htmlFor="password">
             Password
           </label>
           <input
             type="password"
             name="password"
-            className="p-2 w-full py-0.5 display: block mb-4 border-solid border-2 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            className="mt-3 p-2 w-full py-0.5 display: block mb-4 border-solid border-2 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             ref={passwordRef}
           />
-          <span className="text-xs">Don't have an account?</span>
-          <Link to="/register" className="text-xs text-blue-700 ">
+
+          <Link to="/reset" className="text-xs flex justify-end text-blue-700 ">
             {" "}
-            Sign up here!
+            forgot your password?
           </Link>
+
           <input
-            className="p-2 w-full mt-3 display: block bg-blue-500 rounded-md px-4 py-2 text-sm text-white hover:cursor-pointer"
+            className="p-2 w-full mt-3 display: block bg-blue-500 rounded-md px-4 py-2 text-sm text-white hover:cursor-pointer hover:bg-blue-400"
             type="submit"
             value="Submit"
             disabled={loading}

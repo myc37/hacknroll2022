@@ -188,6 +188,7 @@ const Transaction = ({ open, setOpen }) => {
 			</DialogActions>
 		</Dialog>
 	);
+
 };
 
 export default Transaction;
