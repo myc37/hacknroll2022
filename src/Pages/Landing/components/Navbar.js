@@ -120,7 +120,6 @@ const Navbar = () => {
       <Link to="/" className="pl-8 font-bold text-xl">
         FinanceMeister
       </Link>
-
       <div className="mr-7">{isLoggedIn()}</div>
     </nav>
   );
