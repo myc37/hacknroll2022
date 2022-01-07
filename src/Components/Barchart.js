@@ -10,7 +10,6 @@ import {
   ReferenceLine,
   ResponsiveContainer,
 } from "recharts";
-import "./DashboardCard.css";
 
 //dummy data
 const data = [
