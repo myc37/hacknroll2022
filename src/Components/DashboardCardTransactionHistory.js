@@ -7,7 +7,7 @@ import useDate from "../Hooks/useDate";
 export const DashboardCardTransactionHistory = ({ transactions }) => {
   const [open, setOpen] = useState(false);
   const modalProps = { open, setOpen };
-  const { today, oneWeekAgo } = useDate();
+  const { today, oneWeekAgo} = useDate();
   const weeklyProps = { today, oneWeekAgo, transactions };
 
   return (

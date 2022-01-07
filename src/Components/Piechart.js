@@ -10,10 +10,11 @@ import {
 
 
 
-export default function Piechart({ transactions, today, oneWeekAgo }) {
+export default function Piechart({ transactions, today, oneWeekAgo,oneMonthAgo, oneYearAgo }) {
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042","FF0000"];
+  
   const data01 = [
-    {  name: 'Transport', value: transactions.filter(transaction => transaction.category ==="Transport" && transaction.type ==="expense").map(filtered => -filtered.amount).reduce((a,b)=> a+b,0)},
+    { name: 'Transport', value: transactions.filter(transaction => transaction.category ==="Transport" && transaction.type ==="expense").map(filtered => -filtered.amount).reduce((a,b)=> a+b,0)},
     { name: 'Food', value: transactions.filter(transaction => transaction.category ==="Food" && transaction.type ==="expense").map(filtered => -filtered.amount).reduce((a,b)=> a+b,0) },
     { name: 'Luxury', value: transactions.filter(transaction => transaction.category ==="Luxury" && transaction.type ==="expense").map(filtered => -filtered.amount).reduce((a,b)=> a+b,0)},
     { name: 'Business', value: transactions.filter(transaction => transaction.category ==="Business" && transaction.type ==="expense").map(filtered => -filtered.amount).reduce((a,b)=> a+b,0) },
