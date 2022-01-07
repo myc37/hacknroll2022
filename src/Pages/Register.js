@@ -4,13 +4,16 @@ import { useAuth } from "../Contexts/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
+import { db } from "../firebase";
 
 const Register = () => {
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmRef = useRef();
   const [loading, setLoading] = useState(false);
-  const { register } = useAuth();
+  const { currentUser, register } = useAuth();
   const nav = useNavigate();
 
   async function handleSubmit(e) {
@@ -21,8 +24,29 @@ const Register = () => {
     try {
       setLoading(true);
       await register(emailRef.current.value, passwordRef.current.value);
+      console.log(firstNameRef.current.value);
+      await db
+        .collection("userInfo")
+        .doc(emailRef.current.value)
+        .get()
+        .then((doc) => {
+          if (!doc.exists) {
+            db.collection("userInfo")
+              .doc(emailRef.current.value)
+              .set({
+                firstName: firstNameRef.current.value,
+                lastName: lastNameRef.current.value,
+              })
+              .then((docRef) => {
+                //console.log(docRef);
+              })
+              .catch((error) => {
+                //console.log(error);
+              });
+          }
+        });
       setLoading(false);
-      nav("/dashboard");
+      nav("/");
     } catch (error) {
       toast.error(error.message.substring(10), {
         position: "top-center",
@@ -49,6 +73,27 @@ const Register = () => {
           <h2 className="mb-6 text-center jutify-center text-lg font-bold text-blue-700">
             Registration
           </h2>
+
+          <label className="font-semibold" htmlFor="firstName">
+            First Name
+          </label>
+          <input
+            type="text"
+            name="firstName"
+            className="mt-3 p-2 w-full py-0.5 display: block mb-4 border-solid border-2 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            ref={firstNameRef}
+          />
+
+          <label className="font-semibold" htmlFor="lastName">
+            Last Name
+          </label>
+          <input
+            type="text"
+            name="lastName"
+            className="mt-3 p-2 w-full py-0.5 display: block mb-4 border-solid border-2 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            ref={lastNameRef}
+          />
+
           <label className="font-semibold" htmlFor="email">
             Email address
           </label>
