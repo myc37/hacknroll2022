@@ -7,9 +7,6 @@ import { useAuth } from "../Contexts/AuthContext";
 
 const Home = () => {
 	const { currentUser } = useAuth();
-	if (currentUser) {
-		console.log(currentUser.uid);
-	}
 	return (
 		<div className="bg-white h-screen flex flex-row justify-center items-center">
 			<div className="max-w-md">
