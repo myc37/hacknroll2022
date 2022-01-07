@@ -4,54 +4,59 @@ import CategoryIcon from "@mui/icons-material/Category";
 import DirectionsBusFilledIcon from "@mui/icons-material/DirectionsBusFilled";
 import DiamondIcon from "@mui/icons-material/Diamond";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 
 export default function TransactionHistory({
-  transactions,
-  today,
-  oneWeekAgo,
+	transactions,
+	today,
+	oneWeekAgo,
 }) {
-  const [filtered, setFiltered] = useState([]);
+	const [filtered, setFiltered] = useState([]);
 
-  const categories = {
-    food: <FastfoodIcon />,
-    transport: <DirectionsBusFilledIcon />,
-    luxury: <DiamondIcon />,
-    business: <BusinessCenterIcon />,
-    other: <CategoryIcon />,
-  };
+	const categories = {
+		Income: <AttachMoneyIcon />,
+		Food: <FastfoodIcon />,
+		Transport: <DirectionsBusFilledIcon />,
+		Luxury: <DiamondIcon />,
+		Business: <BusinessCenterIcon />,
+		Other: <CategoryIcon />,
+	};
 
-  useEffect(() => {
-    const temp = transactions.filter(
-      (transaction) =>
-        transaction.date >= oneWeekAgo && transaction.date <= today
-    );
-    setFiltered(temp);
-  }, [transactions]);
+	useEffect(() => {
+		const temp = transactions.filter(
+			(transaction) =>
+				transaction.date >= oneWeekAgo && transaction.date <= today
+		);
+		setFiltered(temp);
+	}, [transactions]);
 
-  console.log(filtered);
+	console.log(filtered);
 
-  return (
-    <div>
-      {filtered.map((transaction, index) => (
-        <div
-          key={index}
-          className="flex justify-between pr-8 pl-8 bg-white border-2 border-gray-500 py-5 rounded-lg"
-        >
-          <div className="flex">
-            {categories[transaction.category]}
-            <h2 className="ml-2">{transaction.type}</h2>
-            <text className="ml-4 text-gray-500">
-              {transaction.description}
-            </text>
-          </div>
-          <p>
-            {transaction.amount < 0 ? "-" : "+"}$
-            {transaction.amount < 0
-              ? -1 * transaction.amount
-              : transaction.amount}
-          </p>
-        </div>
-      ))}
-    </div>
-  );
+	return (
+		<div className="py-4 px-16">
+			{filtered.map((transaction, index) => (
+				<div
+					key={index}
+					className={
+						transaction.type === "expense"
+							? "flex justify-between pr-8 pl-8 bg-red-400 hover:bg-red-500 border-2 border-gray-500 py-5 rounded-lg"
+							: "flex justify-between pr-8 pl-8 bg-green-500 hover:bg-green-600 border-2 border-gray-500 py-5 rounded-lg"
+					}
+				>
+					<div className="flex flex-column items-end">
+						{categories[transaction.category]}
+						<p className="ml-2 text-xl font-semibold">
+							{transaction.type}
+						</p>
+					</div>
+					<p className="text-xl font-semibold">
+						$
+						{transaction.amount < 0
+							? -1 * transaction.amount
+							: transaction.amount}
+					</p>
+				</div>
+			))}
+		</div>
+	);
 }
