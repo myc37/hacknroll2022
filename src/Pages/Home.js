@@ -5,6 +5,8 @@ import { DashboardCardBarchart } from "../Components/DashboardCardBarchart";
 import { DashboardCardLinechart } from "../Components/DashboardCardLinechart";
 import { DashboardCardPiechart } from "../Components/DashboardCardPiechart";
 import Daterange from "../Components/Daterange";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
   return (
@@ -14,7 +16,7 @@ const Home = () => {
           FinanceMeister
         </h1>
         <p className="mb-8">
-          A website to help track one's transactions (expenses & income).
+          A website to help track one's transactions (expenses and income).
           Provides some useful analysis based on the transactions.
         </p>
         <Link
@@ -25,6 +27,7 @@ const Home = () => {
         </Link>
       </div>
       <img src={FinanceBro} alt="Landing Page" className="h-3/4" />
+      <ToastContainer />
     </div>
   );
 };

@@ -8,11 +8,13 @@ export const DashboardCardBarchart = () => {
         <h2 className="dashboardcard-header">Income vs Expense</h2>
         <div className="dashboardcard-subheader">Monthly Analysis</div>
       </div>
-      <div className="text-xs font-semibold text-gray-400 uppercase mb-1 ml-2">
+      <div className="text-xs font-semibold text-gray-400 uppercase mb-1 ml-10">
         Total:
       </div>
       <div className="flex items-start">
-        <div className="text-3xl font-bold text-gray-800 ml-2">$24,780</div>
+        <div className="text-3xl font-bold text-gray-800 ml-10 mb-5">
+          $24,780
+        </div>
         <div className="text-sm font-semibold text-white px-1.5 bg-green-500 rounded-full ml-2">
           +49%
         </div>
