@@ -9,6 +9,7 @@ import ResetPassword from "./Pages/ResetPassword";
 import Transaction from "./Pages/Transaction";
 import Footer from "./Pages/Landing/components/Footer";
 import Navbar from "./Pages/Landing/components/Navbar";
+import News from "./Pages/News";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/reset" element={<ResetPassword />} />
           <Route path="/transaction" element={<Transaction />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/news" element={<News />} />
         </Routes>
         <Footer />
       </AuthProvider>

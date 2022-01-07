@@ -19,7 +19,7 @@ const Navbar = () => {
     if (currentUser != null) {
       return (
         <>
-          <Link className="p-4 hover:bg-gray-100" to="/dashboard">
+          <Link className="p-4 hover:bg-secondary rounded-full" to="/dashboard">
             <svg
               className="w-6 h-6 display: inline mr-2 mb-1"
               fill="none"
@@ -36,7 +36,7 @@ const Navbar = () => {
             </svg>
             Dashboard
           </Link>
-          <Link className="p-4 hover:bg-gray-100" to="/history">
+          <Link className="p-4 hover:bg-secondary rounded-full" to="/history">
             <svg
               className="w-6 h-6 display: inline mr-2 mb-1"
               fill="none"
@@ -53,7 +53,7 @@ const Navbar = () => {
             </svg>
             History
           </Link>
-          <Link className="p-4 hover:bg-gray-100" to="/goals">
+          <Link className="p-4 hover:bg-secondary rounded-full" to="/goals">
             <svg
               className="w-6 h-6 display: inline mr-2 mb-1"
               fill="none"
@@ -70,7 +70,7 @@ const Navbar = () => {
             </svg>
             Goals
           </Link>
-          <Link className="p-4 hover:bg-gray-100" to="/news">
+          <Link className="p-4 hover:bg-secondary rounded-full" to="/news">
             <svg
               className="w-6 h-6 display: inline mr-2 mb-1"
               fill="none"
@@ -114,7 +114,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="flex justify-between items-center h-16 bg-white text-black relative shadow-sm"
+      className="flex justify-between items-center h-16 bg-tertiary text-white relative shadow-sm"
       role="navigation"
     >
       <Link to="/" className="pl-8 font-bold text-xl">
