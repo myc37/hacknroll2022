@@ -1,12 +1,10 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { DashboardCardPiechart } from "./Components/DashboardCardPiechart";
-import { AuthProvider } from "./Contexts/AuthContext";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useAuth } from "./Contexts/AuthContext";
 import Dashboard from "./Pages/Dashboard";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import ResetPassword from "./Pages/ResetPassword";
-import Transaction from "./Pages/Transaction";
 import Footer from "./Pages/Landing/components/Footer";
 import Navbar from "./Pages/Landing/components/Navbar";
 import News from "./Pages/News";
@@ -14,23 +12,33 @@ import History from "./Pages/History";
 import Goals from "./Pages/Goals";
 
 function App() {
+  const { currentUser } = useAuth();
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <Navbar />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/reset" element={<ResetPassword />} />
-          <Route path="/transaction" element={<Transaction />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/history" element={<History />} />
-          <Route path="/goals" element={<Goals />} />
-        </Routes>
-        <Footer />
-      </AuthProvider>
+      <Navbar />
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={currentUser ? <Dashboard /> : <Home />}
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/reset" element={<ResetPassword />} />
+          <Route
+          path="/goals"
+          element={currentUser ? <Goals /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/news"
+          element={currentUser ? <News /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/history"
+          element={currentUser ? <History /> : <Navigate to="/login" />}
+        />
+      </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

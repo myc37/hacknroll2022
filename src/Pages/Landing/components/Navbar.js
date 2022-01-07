@@ -3,17 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../Contexts/AuthContext";
 
 const Navbar = () => {
-  const { currentUser, logout } = useAuth();
-  const nav = useNavigate();
+	const { currentUser, logout } = useAuth();
+	const nav = useNavigate();
 
-  async function handleLogout() {
-    try {
-      await logout();
-      nav("/login");
-    } catch {
-      console.log("Error");
-    }
-  }
+	async function handleLogout() {
+		try {
+			await logout();
+			nav("/login");
+		} catch {
+			console.log("Error");
+		}
+	}
 
   function isLoggedIn() {
     if (currentUser != null) {
@@ -112,18 +112,19 @@ const Navbar = () => {
     }
   }
 
-  return (
-    <nav
-      className="flex justify-between items-center h-16 bg-tertiary text-white relative shadow-sm"
-      role="navigation"
-    >
-      <Link to="/" className="pl-8 font-bold text-xl">
-        FinanceMeister
-      </Link>
 
-      <div className="mr-7">{isLoggedIn()}</div>
-    </nav>
-  );
+	return (
+		<nav
+			className="flex justify-between items-center h-16 bg-tertiary text-white relative shadow-sm"
+			role="navigation"
+		>
+			<Link to="/" className="pl-8 font-bold text-xl">
+				FinanceMeister
+			</Link>
+
+			<div className="mr-7">{isLoggedIn()}</div>
+		</nav>
+	);
 };
 
 export default Navbar;
