@@ -6,19 +6,23 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import ResetPassword from "./Pages/ResetPassword";
 import Transaction from "./Pages/Transaction";
+import Footer from "./Pages/Landing/components/Footer";
+import Navbar from "./Pages/Landing/components/Navbar";
 
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        <Navbar />
         <Routes>
-          <Route exact path="/" element={<Dashboard />} />
+          <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reset" element={<ResetPassword />} />
           <Route path="/transaction" element={<Transaction />} />
-          <Route path="/dashboard" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
+        <Footer />
       </AuthProvider>
     </BrowserRouter>
   );
