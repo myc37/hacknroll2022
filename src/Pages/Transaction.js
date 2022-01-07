@@ -17,8 +17,8 @@ const expenseOptions = ["Transport", "Food", "Luxury", "Business", "Others"];
 const Transaction = ({ open, setOpen }) => {
 	const { currentUser } = useAuth();
 	const [date, setDate] = useState(new Date());
-	const [type, setType] = useState("income");
-	const [amount, setAmount] = useState();
+	const [type, setType] = useState("");
+	const [amount, setAmount] = useState("");
 	const [category, setCategory] = useState("Transport");
 	const [description, setDescription] = useState("");
 	const nav = useNavigate();
@@ -36,7 +36,6 @@ const Transaction = ({ open, setOpen }) => {
 			description,
 			user: currentUser ? currentUser.uid : "",
 		};
-		console.log(formData);
 		try {
 			await db.collection("transactions").add(formData);
 			toast.success("Added Transaction!", {
@@ -56,9 +55,9 @@ const Transaction = ({ open, setOpen }) => {
 	return (
 		<Dialog open={open} onClose={() => setOpen(false)}>
 			<DialogTitle>
-				<h1 className="w-full text-center font-semibold text-4xl my-4">
+				<p className="w-full text-center font-semibold text-4xl my-4">
 					Add Transaction
-				</h1>
+				</p>
 			</DialogTitle>
 			<DialogContent>
 				<form
@@ -66,7 +65,7 @@ const Transaction = ({ open, setOpen }) => {
 					className="grid grid-rows-auto gap-4 place-content-center"
 					onSubmit={handleSubmit}
 				>
-					<div className="mt-4">
+					<div>
 						<label
 							htmlFor="datepicker"
 							className="block font-semibold text-blue-700 mb-2"
@@ -77,6 +76,7 @@ const Transaction = ({ open, setOpen }) => {
 							name="datepicker"
 							id="datepicker"
 							selected={date}
+							maxDate={new Date()}
 							onChange={(e) => setDate(e)}
 							className="p-2 rounded-md border-2 border-gray-400 w-full text-center"
 						/>
@@ -114,6 +114,7 @@ const Transaction = ({ open, setOpen }) => {
 						<select
 							name="category"
 							id="category"
+							value={category}
 							onChange={(e) => setCategory(e.target.value)}
 							disabled={type !== "expense"}
 							className="rounded-md border-2 border-gray-400 w-full p-2 text-center"
