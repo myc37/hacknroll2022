@@ -7,7 +7,7 @@
 		@apply flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white shadow-lg rounded-2xl border border-gray-200;
 	}
 	.dashboardcard-transaction-box {
-		@apply flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white shadow-lg rounded-2xl border border-gray-200 overflow-auto;
+		@apply flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white shadow-lg rounded-2xl border border-gray-200 overflow-auto h-96;
 	}
 	.dashboardcard-header-box {
 		@apply px-5 pt-5;

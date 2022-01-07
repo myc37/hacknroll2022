@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Dashboard = () => {
+
   const [data, setData] = useState([]);
   const [name, setName] = useState("");
 
@@ -73,6 +74,7 @@ const Dashboard = () => {
       <ToastContainer />
     </div>
   );
+
 };
 
 export default Dashboard;
