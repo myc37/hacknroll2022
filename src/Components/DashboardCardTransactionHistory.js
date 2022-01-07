@@ -6,6 +6,7 @@ import Transaction from "../Pages/Transaction";
 export const DashboardCardTransactionHistory = () => {
   const [open, setOpen] = useState(false);
   const props = { open, setOpen };
+
   return (
     <>
       <div className="dashboardcard-transaction-box">

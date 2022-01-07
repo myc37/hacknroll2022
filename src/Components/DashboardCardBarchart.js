@@ -12,11 +12,8 @@ export const DashboardCardBarchart = () => {
         Total:
       </div>
       <div className="flex items-start">
-        <div className="text-3xl font-bold text-gray-800 ml-10 mb-5">
-          $24,780
-        </div>
-        <div className="text-sm font-semibold text-white px-1.5 bg-green-500 rounded-full ml-2">
-          +49%
+        <div className="text-2xl font-bold text-white ml-10 mb-5 px-3 py-1 bg-green-500 rounded-full">
+          +$24,780
         </div>
       </div>
       <Barchart></Barchart>
