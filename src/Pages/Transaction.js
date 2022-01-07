@@ -17,9 +17,10 @@ const expenseOptions = ["Transport", "Food", "Luxury", "Business", "Others"];
 const Transaction = ({ open, setOpen }) => {
 	const { currentUser } = useAuth();
 	const [date, setDate] = useState(new Date());
+	const [title, setTitle] = useState("");
 	const [type, setType] = useState("");
 	const [amount, setAmount] = useState("");
-	const [category, setCategory] = useState("Transport");
+	const [category, setCategory] = useState("");
 	const [description, setDescription] = useState("");
 	const nav = useNavigate();
 
@@ -27,12 +28,13 @@ const Transaction = ({ open, setOpen }) => {
 		e.preventDefault();
 		const formData = {
 			date,
+			title,
 			type,
 			amount:
 				type === "income"
 					? parseFloat(amount)
 					: parseFloat("-" + amount),
-			category,
+			category: category === "expense" ? category : "Income",
 			description,
 			user: currentUser ? currentUser.uid : "",
 		};
@@ -62,15 +64,34 @@ const Transaction = ({ open, setOpen }) => {
 			<DialogContent>
 				<form
 					id="transactionForm"
-					className="grid grid-rows-auto gap-4 place-content-center"
+					className="grid grid-rows-auto gap-4 place-content-center p-4"
 					onSubmit={handleSubmit}
 				>
+					<div>
+						<label
+							htmlFor="title"
+							className="block font-semibold text-blue-700 mb-2"
+						>
+							Title
+							<p className="text-red-500 inline-block">*</p>
+						</label>
+						<input
+							type="text"
+							name="title"
+							id="title"
+							value={title}
+							onChange={(e) => setTitle(e.target.value)}
+							className="rounded-md border-2 border-gray-400 p-2 text-center w-full"
+							required
+						/>
+					</div>
 					<div>
 						<label
 							htmlFor="datepicker"
 							className="block font-semibold text-blue-700 mb-2"
 						>
-							Date:
+							Date
+							<p className="text-red-500 inline-block">*</p>
 						</label>
 						<DatePicker
 							name="datepicker"
@@ -86,7 +107,8 @@ const Transaction = ({ open, setOpen }) => {
 							htmlFor="type"
 							className="block font-semibold text-blue-700 mb-2"
 						>
-							Type:
+							Type
+							<p className="text-red-500 inline-block">*</p>
 						</label>
 						<select
 							name="type"
@@ -98,7 +120,7 @@ const Transaction = ({ open, setOpen }) => {
 							className="rounded-md border-2 border-gray-400 w-full p-2 text-center"
 							required
 						>
-							<option value="">--Choose--</option>
+							<option value="">-- Choose --</option>
 							<option value="income">Income</option>
 							<option value="expense">Expense</option>
 						</select>
@@ -109,7 +131,10 @@ const Transaction = ({ open, setOpen }) => {
 							htmlFor="category"
 							className="block font-semibold text-blue-700 mb-2"
 						>
-							Category:
+							Category
+							{type === "expense" && (
+								<p className="text-red-500 inline-block">*</p>
+							)}
 						</label>
 						<select
 							name="category"
@@ -120,6 +145,7 @@ const Transaction = ({ open, setOpen }) => {
 							className="rounded-md border-2 border-gray-400 w-full p-2 text-center"
 							required={type === "expense"}
 						>
+							<option value="">-- Choose --</option>
 							{type === "expense" &&
 								expenseOptions.map((option, index) => {
 									return (
@@ -128,7 +154,7 @@ const Transaction = ({ open, setOpen }) => {
 										</option>
 									);
 								})}
-							{type !== "expense" && <option>--N.A.--</option>}
+							{type !== "expense" && <option>-- N.A. --</option>}
 						</select>
 					</div>
 
@@ -137,7 +163,8 @@ const Transaction = ({ open, setOpen }) => {
 							htmlFor="amount"
 							className="block font-semibold text-blue-700 mb-2"
 						>
-							Amount:
+							Amount
+							<p className="text-red-500 inline-block">*</p>
 						</label>
 						<input
 							name="amount"
@@ -157,7 +184,7 @@ const Transaction = ({ open, setOpen }) => {
 							htmlFor="description"
 							className="block font-semibold text-blue-700 mb-2"
 						>
-							Description:
+							Description
 						</label>
 						<textarea
 							name="description"
@@ -188,7 +215,6 @@ const Transaction = ({ open, setOpen }) => {
 			</DialogActions>
 		</Dialog>
 	);
-
 };
 
 export default Transaction;
