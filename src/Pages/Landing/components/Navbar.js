@@ -3,23 +3,23 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../Contexts/AuthContext";
 
 const Navbar = () => {
-	const { currentUser, logout } = useAuth();
-	const nav = useNavigate();
+  const { currentUser, logout } = useAuth();
+  const nav = useNavigate();
 
-	async function handleLogout() {
-		try {
-			await logout();
-			nav("/login");
-		} catch {
-			console.log("Error");
-		}
-	}
+  async function handleLogout() {
+    try {
+      await logout();
+      nav("/login");
+    } catch {
+      console.log("Error");
+    }
+  }
 
   function isLoggedIn() {
     if (currentUser != null) {
       return (
         <>
-          <Link className="p-4 hover:bg-secondary rounded-full" to="/dashboard">
+          <Link className="p-4 hover:bg-secondary rounded-full" to="/">
             <svg
               className="w-6 h-6 display: inline mr-2 mb-1"
               fill="none"
@@ -88,7 +88,7 @@ const Navbar = () => {
             News
           </Link>
           <button
-            className="ml-5 bg-red-500 rounded-md px-4 py-2 text-sm text-white hover:cursor-pointer hover:bg-red-400"
+            className="ml-5 bg-red-500 rounded-md px-4 py-2 text-sm text-white hover:cursor-pointer hover:bg-red-600 font-semi"
             onClick={handleLogout}
           >
             Logout
@@ -102,7 +102,7 @@ const Navbar = () => {
             Home
           </Link>
           <Link
-            className="bg-[#1B6F25] rounded-md px-4 py-2 text-sm text-white hover:cursor-pointer hover:bg-green-500"
+            className="bg-[#1B6F25] rounded-md px-4 py-2 text-sm text-white hover:cursor-pointer hover:bg-green-800"
             to="/login"
           >
             Login
@@ -112,19 +112,17 @@ const Navbar = () => {
     }
   }
 
-
-	return (
-		<nav
-			className="flex justify-between items-center h-16 bg-tertiary text-white relative shadow-sm"
-			role="navigation"
-		>
-			<Link to="/" className="pl-8 font-bold text-xl">
-				FinanceMeister
-			</Link>
-
-			<div className="mr-7">{isLoggedIn()}</div>
-		</nav>
-	);
+  return (
+    <nav
+      className="flex justify-between items-center h-16 bg-tertiary text-white relative shadow-sm"
+      role="navigation"
+    >
+      <Link to="/" className="pl-8 font-bold text-xl">
+        FinanceMeister
+      </Link>
+      <div className="mr-7">{isLoggedIn()}</div>
+    </nav>
+  );
 };
 
 export default Navbar;

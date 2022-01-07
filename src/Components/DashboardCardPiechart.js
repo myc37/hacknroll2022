@@ -45,7 +45,10 @@ export const DashboardCardPiechart = ({ transactions }) => {
               "rounded-full border-2 w-fit p-2 text-sm " +
               (clicked === 0 ? "bg-blue-500 text-white" : "bg-white")
             }
-            onClick={() => (setClicked(0), setFilteredTransactions(filterWeek))}
+            onClick={() => {
+              setClicked(0);
+              setFilteredTransactions(filterWeek);
+            }}
           >
             Past 7 Days
           </button>
@@ -54,9 +57,10 @@ export const DashboardCardPiechart = ({ transactions }) => {
               "rounded-full border-2 w-fit p-2 text-sm " +
               (clicked === 1 ? "bg-blue-500 text-white" : "bg-white")
             }
-            onClick={() => (
-              setClicked(1), setFilteredTransactions(filterMonth)
-            )}
+            onClick={() => {
+              setClicked(1);
+              setFilteredTransactions(filterMonth);
+            }}
           >
             Past Month
           </button>
@@ -65,7 +69,10 @@ export const DashboardCardPiechart = ({ transactions }) => {
               "rounded-full border-2 w-fit p-2 text-sm " +
               (clicked === 2 ? "bg-blue-500 text-white" : "bg-white")
             }
-            onClick={() => (setClicked(2), setFilteredTransactions(filterYear))}
+            onClick={() => {
+              setClicked(2);
+              setFilteredTransactions(filterYear);
+            }}
           >
             Past Year
           </button>
