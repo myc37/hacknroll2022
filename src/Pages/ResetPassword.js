@@ -64,7 +64,7 @@ const ResetPassword = () => {
             ref={emailRef}
           />
           <input
-            className="mt-4 p-2 w-full display : block:display bg-blue-500 rounded-lg px-4 py-2 text-sm text-white hover:cursor-pointer hover:bg-blue-400"
+            className="mt-4 p-2 w-full display : block:display bg-blue-500 rounded-lg px-4 py-2 text-sm text-white hover:cursor-pointer hover:bg-blue-600"
             type="submit"
             value="Submit"
             disabled={loading}

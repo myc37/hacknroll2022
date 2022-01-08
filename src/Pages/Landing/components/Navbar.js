@@ -37,6 +37,20 @@ const Navbar = () => {
             Dashboard
           </Link>
           <Link className="p-4 hover:bg-secondary rounded-full" to="/history">
+            {/* <svg
+              className="w-6 h-6 display: inline mr-2 mb-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg> */}
             <svg
               className="w-6 h-6 display: inline mr-2 mb-1"
               fill="none"
@@ -48,7 +62,7 @@ const Navbar = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
               />
             </svg>
             History
@@ -88,7 +102,7 @@ const Navbar = () => {
             News
           </Link>
           <button
-            className="ml-5 bg-red-500 rounded-md px-4 py-2 text-sm text-white hover:cursor-pointer hover:bg-red-600 font-semi"
+            className="ml-5 bg-slate-100 rounded-md px-4 py-2 text-sm text-black font-semibold hover:cursor-pointer hover:bg-slate-300 font-semi"
             onClick={handleLogout}
           >
             Logout
@@ -98,11 +112,11 @@ const Navbar = () => {
     } else if (currentUser == null) {
       return (
         <>
-          <Link className="p-4 hover:bg-secondary rounded-full" to="/">
+          {/* <Link className="p-4 hover:bg-secondary rounded-full" to="/">
             Home
-          </Link>
+          </Link> */}
           <Link
-            className="bg-[#1B6F25] rounded-md px-4 py-2 text-sm text-white hover:cursor-pointer hover:bg-green-800"
+            className="bg-slate-100 rounded-md px-4 py-2 text-sm text-black hover:cursor-pointer hover:bg-slate-300 font-semibold"
             to="/login"
           >
             Login
@@ -118,6 +132,20 @@ const Navbar = () => {
       role="navigation"
     >
       <Link to="/" className="pl-8 font-bold text-xl">
+        <svg
+          className="w-6 h-6 display: inline mr-2 mb-1"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+          />
+        </svg>
         FinanceMeister
       </Link>
       <div className="mr-7">{isLoggedIn()}</div>
