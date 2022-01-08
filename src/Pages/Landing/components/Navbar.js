@@ -148,7 +148,6 @@ const Navbar = () => {
         </svg>
         FinanceMeister
       </Link>
-
       <div className="mr-7">{isLoggedIn()}</div>
     </nav>
   );
