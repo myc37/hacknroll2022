@@ -23,7 +23,7 @@ export const DashboardCardTransactionHistory = ({ transactions }) => {
               Add a transaction
             </button>
           </div>
-          <div className="dashboardcard-subheader">Past 7 days</div>
+          <div className="dashboardcard-subheader">Past Week</div>
           <div className="dashboardcard-amount">Amount</div>
         </div>
         <TransactionHistory {...weeklyProps} />

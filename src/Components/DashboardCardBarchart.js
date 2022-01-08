@@ -78,7 +78,7 @@ export const DashboardCardBarchart = ({ transactions }) => {
               doSum(filterWeek);
             }}
           >
-            Past 7 Days
+            Past Week
           </button>
           <button
             className={
