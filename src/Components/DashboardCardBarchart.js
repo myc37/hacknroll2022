@@ -49,7 +49,7 @@ export const DashboardCardBarchart = ({ transactions }) => {
     transactions.forEach((transaction) => {
       tempSum += transaction.amount;
     });
-    setSum(-tempSum);
+    setSum(tempSum);
     console.log(tempSum);
   }
 
@@ -68,7 +68,7 @@ export const DashboardCardBarchart = ({ transactions }) => {
               const dailyTransactions = [[], [], [], [], [], [], []];
               filterWeek.forEach((transaction) => {
                 const index = transaction.date.getDay();
-                dailyTransactions[index].push(-transaction.amount);
+                dailyTransactions[index].push(transaction.amount);
               });
               const dailyData = dailyTransactions.map((day, index) => ({
                 name: labels[index],
@@ -92,7 +92,7 @@ export const DashboardCardBarchart = ({ transactions }) => {
                 const index = Math.abs(
                   Math.floor((today.getDate() - transaction.date.getDate()) / 7)
                 );
-                weeklyTransactions[index].push(-transaction.amount);
+                weeklyTransactions[index].push(transaction.amount);
               });
 
               const weeklyData = weeklyTransactions.map((week, index) => ({
@@ -128,7 +128,7 @@ export const DashboardCardBarchart = ({ transactions }) => {
               ];
               filterYear.forEach((transaction) => {
                 const index = transaction.date.getMonth();
-                monthlyTransactions[index].push(-transaction.amount);
+                monthlyTransactions[index].push(transaction.amount);
               });
 
               for (let i = 0; i < today.getMonth(); i++) {
@@ -158,7 +158,7 @@ export const DashboardCardBarchart = ({ transactions }) => {
             (sum > 0 ? "bg-green-500" : "bg-red-500")
           }
         >
-          {sum > 0 ? "+" : "-"}${sum > 0 ? sum : -sum}
+          {sum > 0 ? "+" : "-"}${sum > 0 ? Math.round(sum) : Math.round(-sum)}
         </div>
       </div>
       <Barchart {...chartProps}></Barchart>
