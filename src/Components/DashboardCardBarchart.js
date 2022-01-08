@@ -158,10 +158,7 @@ export const DashboardCardBarchart = ({ transactions }) => {
             (sum > 0 ? "bg-green-500" : "bg-red-500")
           }
         >
-          {sum > 0 ? "+" : "-"}$
-          {sum > 0
-            ? sum.toPrecision(sum.toString().length + 2)
-            : -sum.toPrecision(sum.toString().length + 2)}
+          {sum > 0 ? "+" : "-"}${sum > 0 ? sum.toFixed(2) : -sum.toFixed(2)}
         </div>
       </div>
       <Barchart {...chartProps}></Barchart>
