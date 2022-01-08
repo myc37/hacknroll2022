@@ -89,8 +89,8 @@ export const DashboardCardBarchart = ({ transactions }) => {
               setClicked(1);
               const weeklyTransactions = [[], [], [], []];
               filterMonth.forEach((transaction) => {
-                const index = Math.abs(
-                  Math.floor((today.getDate() - transaction.date.getDate()) / 7)
+                const index = Math.round(
+                  (today - transaction.date) / 604800000
                 );
                 weeklyTransactions[index].push(transaction.amount);
               });
@@ -158,7 +158,10 @@ export const DashboardCardBarchart = ({ transactions }) => {
             (sum > 0 ? "bg-green-500" : "bg-red-500")
           }
         >
-          {sum > 0 ? "+" : "-"}${sum > 0 ? Math.round(sum) : Math.round(-sum)}
+          {sum > 0 ? "+" : "-"}$
+          {sum > 0
+            ? sum.toPrecision(sum.toString().length + 2)
+            : -sum.toPrecision(sum.toString().length + 2)}
         </div>
       </div>
       <Barchart {...chartProps}></Barchart>
