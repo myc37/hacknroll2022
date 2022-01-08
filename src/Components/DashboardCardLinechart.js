@@ -102,12 +102,8 @@ export const DashboardCardLinechart = ({ transactions }) => {
 							setClicked(1);
 							const weeklyTransactions = [[], [], [], []];
 							filterMonth.forEach((transaction) => {
-								const index = Math.abs(
-									Math.floor(
-										(today.getDate() -
-											transaction.date.getDate()) /
-											7
-									)
+								const index = Math.round(
+									(today - transaction.date) / 604800000
 								);
 								weeklyTransactions[index].push(
 									-transaction.amount

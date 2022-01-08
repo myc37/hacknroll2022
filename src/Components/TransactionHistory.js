@@ -15,11 +15,11 @@ export default function TransactionHistory({
 
   const categories = {
     Income: <AttachMoneyIcon />,
-    Food: <LunchDiningOutlinedIcon className="fill-white" />,
-    Transport: <DirectionsBusFilledIcon className="fill-white" />,
+    Food: <LunchDiningOutlinedIcon />,
+    Transport: <DirectionsBusFilledIcon />,
     Luxury: <DiamondIcon />,
     Business: <BusinessCenterIcon />,
-    Other: <CategoryIcon />,
+    Others: <CategoryIcon />,
   };
 
   useEffect(() => {
