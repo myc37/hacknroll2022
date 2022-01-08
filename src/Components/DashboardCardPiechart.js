@@ -7,20 +7,17 @@ export const DashboardCardPiechart = ({ transactions }) => {
 	const { today, oneWeekAgo, oneMonthAgo, oneYearAgo } = useDate();
 	const [clicked, setClicked] = useState(-1);
 
-	const filterWeek = transactions.filter(
-		(transaction) =>
-			transaction.date <= today && transaction.date >= oneWeekAgo
-	);
-	const filterMonth = transactions.filter(
-		(transaction) =>
-			transaction.date <= today && transaction.date >= oneMonthAgo
-	);
-	const filterYear = transactions.filter(
-		(transaction) =>
-			transaction.date <= today && transaction.date >= oneYearAgo
-	);
-	const [filteredTransactions, setFilteredTransactions] =
-		useState(filterWeek);
+  const filterWeek = transactions.filter(
+    (transaction) => transaction.date <= today && transaction.date >= oneWeekAgo
+  );
+  const filterMonth = transactions.filter(
+    (transaction) =>
+      transaction.date <= today && transaction.date >= oneMonthAgo
+  );
+  const filterYear = transactions.filter(
+    (transaction) => transaction.date <= today && transaction.date >= oneYearAgo
+  );
+  const [filteredTransactions, setFilteredTransactions] = useState(filterWeek);
 
 	const chartProps = {
 		today,
