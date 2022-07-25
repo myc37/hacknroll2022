@@ -2,6 +2,8 @@
 
 FinanceMeister is a website that helps users track his/her daily transactions whilst also providing detailed analysis on one's spending behaviour. Users can also set goals to improve on their spending behaviour and read up on financial planning tips through our news page.
 
+***Context: Done as part of a one day hackathon, Hack&Roll 2022, with some members just learning the tech stack!***
+
 <https://financemeister.vercel.app/>
 
 ## Tech Stack
