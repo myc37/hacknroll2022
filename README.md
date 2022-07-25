@@ -1,8 +1,22 @@
-# Getting Started with Create React App
+# FinanceMeister
+
+FinanceMeister is a website that helps users track his/her daily transactions whilst also providing detailed analysis on one's spending behaviour. Users can also set goals to improve on their spending behaviour and read up on financial planning tips through our news page.
+
+<https://financemeister.vercel.app/>
+
+## Tech Stack
+
+React.js, Firebase, Recharts, Tailwind CSS
+
+## Showcase
+
+[Devpost](https://devpost.com/software/financemeister)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
