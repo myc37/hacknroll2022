@@ -14,6 +14,14 @@ React.js, Firebase, Recharts, Tailwind CSS
 
 [Devpost](https://devpost.com/software/financemeister)
 
+## Screenshots
+
+<img src="https://i.imgur.com/aTVCuy6.png" width="800" height="500" alt="main page"/>
+<img src="https://i.imgur.com/WbHgaz9.png" width="800" height="500" alt="dashboard"/>
+<img src="https://i.imgur.com/cN0822I.png" width="800" height="450" alt="dashboard"/>
+<img src="https://i.imgur.com/FeHhheC.png" width="800" height="450" alt="dashboard"/>
+
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
